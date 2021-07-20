@@ -19,7 +19,7 @@ export default function Home() {
       url_hash,
     });
 
-    if(data.status === 200) setSuccess(true);
+    if (data.status === 200) setSuccess(true);
     else setError(true);
     setLoading(false);
   };
@@ -47,7 +47,18 @@ export default function Home() {
         />
         <button onClick={handleClick}>Shorten IT</button>
         {loading && <p>Loading</p>}
-        {success && <p>URL has been shortened</p>}
+        {success && (
+          <p>
+            URL has been shortened. Go to{" "}
+            <a
+              href={`https://linkly.vercel.app/${url_hash}`}
+              target='_blank'
+              rel='noreferrer'
+            >
+              {`https://linkly.vercel.app/${url_hash}`}
+            </a>
+          </p>
+        )}
         {error && <p>Something Went Wrong</p>}
       </main>
 
